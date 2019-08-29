@@ -6,22 +6,21 @@ import { observer } from "mobx-react";
 import Sidebar from "./Sidebar";
 import Loading from "./Loading";
 import AuthorsList from "./AuthorsList";
-import AuthorDetail from "./AuthorDetail";
 import BookList from "./BookList";
 
 // Store
 import authorStore from "./stores/authorStore";
+import bookStore from "./stores/authorStore";
 
 function App() {
   const getView = () => {
-    if (authorStore.loading) {
+    if (authorStore.loading || bookStore.loading) {
       return <Loading />;
     } else {
       return (
         <Switch>
           <Redirect exact from="/" to="/authors" />
-          <Route path="/authors/:authorID" component={AuthorDetail} />
-          <Route path="/authors/" component={AuthorsList} />
+          <Route path="/authors/:authorID?" component={AuthorsList} />
           <Route path="/books/:bookColor?" component={BookList} />
         </Switch>
       );

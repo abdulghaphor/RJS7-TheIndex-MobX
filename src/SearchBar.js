@@ -12,6 +12,7 @@ function SearchBar(props) {
           type="text"
           onChange={e => (store.query = e.target.value)}
         />
+        {console.log(store.query)}
         <div className="input-group-append">
           <span className="input-group-text">
             <FontAwesomeIcon icon={faSearch} />
